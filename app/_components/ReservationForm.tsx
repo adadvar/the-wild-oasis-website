@@ -1,5 +1,12 @@
+"use client";
+
+import { useReservation } from "./ReservationContext";
+
 //@ts-ignore
 function ReservationForm({ cabin }) {
+	//@ts-ignore
+
+	const { range } = useReservation();
 	// CHANGE
 	const { maxCapacity } = cabin;
 
