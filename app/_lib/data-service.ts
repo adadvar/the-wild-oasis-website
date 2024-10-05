@@ -1,6 +1,7 @@
 import { eachDayOfInterval } from 'date-fns';
 import { supabase } from './supabase';
 import { notFound } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 /////////////
 // GET
@@ -124,6 +125,8 @@ export async function getBookedDatesByCabinId(cabinId: any) {
     })
     .flat();
 
+  revalidatePath(`/cabins/${cabinId}`)
+
   return bookedDates;
 }
 
@@ -152,7 +155,7 @@ export async function getCountries() {
 
 /////////////
 // CREATE
-
+/*
 export async function createGuest(newGuest: any) {
   const { data, error } = await supabase.from('guests').insert([newGuest]);
 
@@ -226,3 +229,4 @@ export async function deleteBooking(id: any) {
   }
   return data;
 }
+*/
